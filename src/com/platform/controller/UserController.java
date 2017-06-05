@@ -18,6 +18,6 @@ public class UserController {
 	@GetMapping("userInfo")
 	public String userInfo(HttpServletRequest request,Model model) {
 		User user = userService.getUserById(Integer.parseInt(request.getParameter("uid")));
-		return user.getUsername();
+		return "userinfo";
 	}
 }

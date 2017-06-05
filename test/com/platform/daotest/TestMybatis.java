@@ -1,7 +1,5 @@
 package com.platform.daotest;
 
-import javax.annotation.Resource;
-
 import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,7 +20,7 @@ public class TestMybatis {
 	
 	@Test
 	public void testGetUser() {
-		User user = userService.getUserById(1);
+		User user = userService.getUserById(2);
 		System.out.println("==get user {}"+user.getUsername());
 	}
 }
