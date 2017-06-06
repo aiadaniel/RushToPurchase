@@ -16,6 +16,9 @@
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 
+<!-- 	<mvc:resources location="/resource/js/" mapping="/resource/js/**"/>
+ 	<mvc:resources location="/css/" mapping="/css/**"/>
+ 	<mvc:resources location="/images/" mapping="/images/**"/> -->
 
 	<!-- ViewResolver -->
 	<bean
@@ -28,7 +31,7 @@
 
 
 	<!-- 让服务器自身默认的Servlet去帮我们处理静态资源的响应 -->
-	<!-- <mvc:default-servlet-handler/> -->
+	<mvc:default-servlet-handler/>
 
 	<!-- spring 的自动注解，如果配置扫描包component-scan，其实可以不用这项 -->
 	<!-- <context:annotation-config /> -->

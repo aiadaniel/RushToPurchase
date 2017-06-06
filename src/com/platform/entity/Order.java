@@ -2,7 +2,7 @@ package com.platform.entity;
 
 import java.util.Date;
 /**
- * ¶©µ¥ÊµÌåÀà
+ * è®¢å•å®ä½“ç±»
  */
 public class Order {
 	private long goodsId;
@@ -10,7 +10,7 @@ public class Order {
     private short state;
 	private Date createTime;
 	
-	private Goods purchase;//¿â´æ¶à¸ö
+	private Goods goods;//
 
 	public long getGoodsId() {
 		return goodsId;
@@ -44,11 +44,12 @@ public class Order {
 		this.createTime = createTime;
 	}
 
-	public Goods getPurchase() {
-		return purchase;
+	public Goods getGoods() {
+		return goods;
 	}
 
-	public void setPurchase(Goods purchase) {
-		this.purchase = purchase;
+	public void setGoods(Goods goods) {
+		this.goods = goods;
 	}
+
 }

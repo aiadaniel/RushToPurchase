@@ -22,10 +22,10 @@
 		o.create_time,
 		o.state,
 		g.goods_id "goods.goods_id",
-		g.name "goods.goods_name",
-		g.start_time "seckill.start_time",
-		g.end_time "seckill.end_time",
-		g.create_time "seckill.create_time"
+		g.goods_name "goods.goods_name",
+		g.start_time "goods.start_time",
+		g.end_time "goods.end_time",
+		g.create_time "goods.create_time"
 		FROM orders o
 		INNER JOIN goods g ON o.goods_id=g.goods_id
 		WHERE o.goods_id=#{goodsid}

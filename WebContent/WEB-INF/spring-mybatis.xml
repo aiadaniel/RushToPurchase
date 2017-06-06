@@ -46,6 +46,10 @@
 		<property name="dataSource" ref="dataSource" />
 		<!-- 自动扫描mapping.xml文件 -->
 		<property name="mapperLocations" value="classpath:com/platform/mapping/*.xml"></property>
+		<!--配置mybatis全局配置文件:mybatis-config.xml-->
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+        <!--扫描entity包,使用别名,多个用;隔开-->
+        <property name="typeAliasesPackage" value="com.platform.entity"/>
 	</bean>
 
 	<!-- dao注入spring -->
@@ -60,5 +64,13 @@
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
+	
+	<!-- 配置基于注解的声明式事务 -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+	<!-- 在单元测试时没有引入这行，提示：org.springframework.beans.factory.BeanNotOfRequiredTypeException:
+		 Bean named 'goodsService' is expected to be of type [com.platform.service.GoodsService] 
+		 but was actually of type [com.sun.proxy.$Proxy7]之类的错误信息 -->
+	<aop:aspectj-autoproxy proxy-target-class="true" />
 
 </beans>

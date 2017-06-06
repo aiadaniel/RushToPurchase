@@ -1,11 +1,12 @@
 package com.platform.dao;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.platform.entity.Order;
 
 public interface OrderDao {
 
-	//ÇÀ¹º³É¹¦
-	int insertGoods(long goodsid,long phone);
+	int insertGoods(@Param("goodsid")long goodsid,@Param("phone")long phone);
 	
-	Order queryById(long goodsid,long phone);
+	Order queryById(@Param("goodsid")long goodsid,@Param("phone")long phone);
 }

@@ -29,21 +29,21 @@
                 </thead>
 
                 <tbody>
-                <c:forEach var="sk" items="${list}">
+                <c:forEach var="goods" items="${list}">
                     <tr>
-                        <td>${sk.name}</td>
-                        <td>${sk.number}</td>
+                        <td>${goods.goodsName}</td>
+                        <td>${goods.inventory}</td>
                         <td>
-                            <fmt:formatDate value="${sk.startTime}" pattern="yyyy-MM-dd HH:mm:ss"/>
+                            <fmt:formatDate value="${goods.startTime}" pattern="yyyy-MM-dd HH:mm:ss"/>
                         </td>
                         <td>
-                            <fmt:formatDate value="${sk.endTime}" pattern="yyyy-MM-dd HH:mm:ss"/>
+                            <fmt:formatDate value="${goods.endTime}" pattern="yyyy-MM-dd HH:mm:ss"/>
                         </td>
                         <td>
-                            <fmt:formatDate value="${sk.createTime}" pattern="yyyy-MM-dd HH:mm:ss"/>
+                            <fmt:formatDate value="${goods.createTime}" pattern="yyyy-MM-dd HH:mm:ss"/>
                         </td>
                         <td>
-                            <a class="btn btn-info" href="/seckill/${sk.seckillId}/detail" 　target="_blank">Link</a>
+                            <a class="btn btn-info" href="/rushToPurchase/purchase/${goods.goodsId}/detail" 　target="_blank">详情</a>
                         </td>
                     </tr>
                 </c:forEach>

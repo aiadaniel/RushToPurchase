@@ -10,19 +10,19 @@
 			<property name="suppressDate" value="true" /> <!-- 是否生成注释代时间戳 -->
 		</commentGenerator>
 		<jdbcConnection
-			connectionURL="jdbc:mysql://localhost:3306/hotchpotchSSM?characterEncoding=UTF-8"
+			connectionURL="jdbc:mysql://localhost:3306/rushToPurchase?characterEncoding=UTF-8"
 			driverClass="com.mysql.jdbc.Driver" password="123456" userId="root" />
 		<!-- 生成模型的包名和位置 -->
 		<javaModelGenerator targetPackage="com.platform.entity"
-			targetProject="hotchpotchSSM/src" />
+			targetProject="rushToPurchase/src" />
 		<!-- 生成的映射文件报名和位置 -->
 		<sqlMapGenerator targetPackage="com.platform.mapping"
-			targetProject="hotchpotchSSM/src" />
+			targetProject="rushToPurchase/src" />
 		<!-- 生成DAO的包名和位置 -->
 		<javaClientGenerator targetPackage="com.platform.dao"
-			targetProject="hotchpotchSSM/src" type="XMLMAPPER" />
+			targetProject="rushToPurchase/src" type="XMLMAPPER" />
 
-		<table schema="hotchpotchSSM" tableName="user"
+		<table schema="rushToPurchase" tableName="user"
 			enableCountByExample="false" enableDeleteByExample="false"
 			enableSelectByExample="false" enableUpdateByExample="false">
 			<columnOverride column="id" property="id" />

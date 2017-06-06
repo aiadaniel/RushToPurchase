@@ -3,12 +3,12 @@ package com.platform.entity;
 import java.util.Date;
 
 /**
- * ΗΐΉΊΚµΜεΐΰ
+ * ε•†ε“ε®δ½“η±»
  */
 public class Goods {
 	private long goodsId;
 	private String goodsName;
-	private int inventory;// Ώβ΄ζ
+	private int inventory;// εΊ“ε­
 	private Date startTime;
 	private Date endTime;
 	private Date createTime;

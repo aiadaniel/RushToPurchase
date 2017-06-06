@@ -9,7 +9,7 @@
     <update id="reduceInventory">
         UPDATE goods
         SET inventory = inventory-1
-        WHERE goods_id=#{goodsId}
+        WHERE goods_id=#{goodsid}
         AND start_time <![CDATA[ <= ]]> #{purchaseDate}
         AND end_time >= #{purchaseDate}
         AND inventory > 0;
@@ -18,7 +18,7 @@
     <select id="queryById" resultType="Goods" parameterType="long">
         SELECT *
         FROM goods
-        WHERE seckill_id=#{goodsid}
+        WHERE goods_id=#{goodsid}
     </select>
 
     <select id="listAllGoods" resultType="Goods">
