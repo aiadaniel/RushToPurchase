@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.platform.dto.Exposer;
@@ -60,7 +59,7 @@ public class PurchaseController {
 	// ajax ,json暴露秒杀接口的方法
 	@PostMapping(value = "/{goodsid}/exposer", produces = { "application/json;charset=UTF-8" })
 	@ResponseBody
-	public PurchaseResult<Exposer> exposer(Long goodsid) {
+	public PurchaseResult<Exposer> exposer(@PathVariable("goodsid")Long goodsid) {
 		PurchaseResult<Exposer> result;
 		try {
 			Exposer exposer = goodsService.exportGoodsUrl(goodsid);
@@ -99,7 +98,8 @@ public class PurchaseController {
 	}
 
 	// 获取系统时间
-	@RequestMapping(value = "/time/now", method = RequestMethod.GET)
+	@GetMapping("/time/now")
+	@ResponseBody
 	public PurchaseResult<Long> time() {
 		Date now = new Date();
 		return new PurchaseResult<Long>(true, now.getTime());

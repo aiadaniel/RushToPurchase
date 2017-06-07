@@ -5,13 +5,13 @@ var purchase = {
     //封装秒杀相关ajax的url
     URL: {
         now: function () {
-            return '/purchase/time/now';
+            return '/rushToPurchase/purchase/time/now';
         },
         exposer: function (seckillId) {
-            return '/purchase/' + seckillId + '/exposer';
+            return '/rushToPurchase/purchase/' + seckillId + '/exposer';
         },
         execution: function (seckillId, md5) {
-            return '/purchase/' + seckillId + '/' + md5 + '/execution';
+            return '/rushToPurchase/purchase/' + seckillId + '/' + md5 + '/execution';
         }
     },
 
@@ -44,12 +44,13 @@ var purchase = {
 
                 $('#killPhoneBtn').click(function () {
                     var inputPhone = $('#killPhoneKey').val();
-                    console.log("inputPhone: " + inputPhone);
+                    console.log("==inputPhone: " + inputPhone);
                     if (purchase.validatePhone(inputPhone)) {
                         //电话写入cookie(7天过期)
-                        $.cookie('killPhone', inputPhone, {expires: 7, path: '/purchase'});
+                        $.cookie('killPhone', inputPhone, {expires: 7, path: '/rushToPurchase/purchase'});
                         //验证通过　　刷新页面
-                        window.location.reload();
+                        console.log("==phone ok & reload!!!");
+                        window.location.reload();//这里需要reload，有更好的方式吗？
                     } else {
                         //todo 错误文案信息抽取到前端字典里
                         $('#killPhoneMessage').hide().html('<label class="label label-danger">手机号错误!</label>').show(300);
@@ -121,7 +122,7 @@ var purchase = {
                         $(this).addClass('disabled');//,<-$(this)===('#killBtn')->
                         //2.发送秒杀请求执行秒杀
                         $.post(killUrl, {}, function (result) {
-                            if (result && result['success']) {
+                            if (result /*&& result['success']*/) {
                                 var killResult = result['data'];
                                 var state = killResult['state'];
                                 var stateInfo = killResult['stateInfo'];
