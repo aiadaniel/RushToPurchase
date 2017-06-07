@@ -28,5 +28,13 @@
         limit #{offset},#{limit}
     </select>
 
-
+	<!-- 使用存储过程 -->
+	<select id="purchaseByProcedure" statementType="CALLABLE">
+        call execute_purchase(
+          #{goodsid,jdbcType=BIGINT,mode=IN},
+          #{phone,jdbcType=BIGINT,mode=IN},
+          #{purchaseTime,jdbcType=TIMESTAMP,mode=IN},
+          #{result,jdbcType=INTEGER,mode=OUT}
+        )
+    </select>
 </mapper>

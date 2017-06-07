@@ -82,7 +82,9 @@ public class PurchaseController {
 		//PurchaseResult<PurchaseExec> result;
 
 		try {
-			PurchaseExec execution = goodsService.executePurchase(goodsid, phone, md5);
+			//PurchaseExec execution = goodsService.executePurchase(goodsid, phone, md5);
+			//使用存储过程
+			PurchaseExec execution = goodsService.executePurchaseProcedure(goodsid, phone, md5);
 			return new PurchaseResult<PurchaseExec>(true, execution);
 		} catch (RepeatPurchaseException e1) {
 			PurchaseExec execution = new PurchaseExec(goodsid, PurchaseStatEnum.REPEAT_PURCHASE);

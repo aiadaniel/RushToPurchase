@@ -5,32 +5,32 @@ CREATE TABLE if not exists `user` (
   `password` varchar(255) NOT NULL,
   `sex` tinyint(2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 comment='²âÊÔÓÃ»§±í';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 comment='æµ‹è¯•ç”¨æˆ·è¡¨';
 
 
 create table if not exists goods (
-goods_id bigint primary key not null auto_increment comment 'ÉÌÆ·id',
-goods_name varchar(255) not null comment 'ÉÌÆ·Ãû',
-inventory int not null comment '¿â´æ',
-start_time timestamp not null comment 'ÇÀ¹º¿ªÊ¼Ê±¼ä',
-end_time timestamp not null comment 'ÇÀ¹º½áÊøÊ±¼ä',
-create_time timestamp not null comment '´´½¨Ê±¼ä',
+goods_id bigint primary key not null auto_increment comment 'å•†å“id',
+goods_name varchar(255) not null comment 'å•†å“å',
+inventory int not null comment 'åº“å­˜',
+start_time timestamp not null comment 'æŠ¢è´­å¼€å§‹æ—¶é—´',
+end_time timestamp not null comment 'æŠ¢è´­ç»“æŸæ—¶é—´',
+create_time timestamp not null comment 'åˆ›å»ºæ—¶é—´',
 key idx_start_time (start_time),
 key idx_end_time (end_time),
 key idx_create_time (create_time)
-)engine=innodb default charset=utf8 comment='ÇÀ¹ºÉÌÆ·¿â´æ±í';
+)engine=innodb default charset=utf8 comment='æŠ¢è´­å•†å“åº“å­˜è¡¨';
 
 insert into goods(goods_name,inventory,start_time,end_time) values 
-('998ÇÀ¹ºiphone8',1000,'2017-06-05 00:00:00','2017-06-06 00:00:00'),
-('250ÇÀ¹ºBMW X6',500,'2017-06-05 00:00:00','2017-06-06 00:00:00'),
-('141ÇÀ¹º´²ÉÏÈı¼şÌ×',600,'2017-06-05 00:00:00','2017-06-06 00:00:00'),
-('131ÇÀ¹ºÌúÈı½Ç',300,'2017-06-05 00:00:00','2017-06-06 00:00:00');
+('998æŠ¢è´­iphone8',1000,'2017-06-05 00:00:00','2017-06-06 00:00:00'),
+('250æŠ¢è´­BMW X6',500,'2017-06-05 00:00:00','2017-06-06 00:00:00'),
+('141æŠ¢è´­åºŠä¸Šä¸‰ä»¶å¥—',600,'2017-06-05 00:00:00','2017-06-06 00:00:00'),
+('131æŠ¢è´­é“ä¸‰è§’',300,'2017-06-05 00:00:00','2017-06-06 00:00:00');
 
 create table if not exists orders (
-goods_id bigint not null comment 'ÉÌÆ·id',
-user_phone bigint not null comment 'ÓÃ»§ÊÖ»ú',
-state int(1) not null default -1 comment 'ÉÌÆ·×´Ì¬£¬-1£ºÎŞĞ§,0£º³É¹¦,1£ºÎŞĞ§£¬2£ºÒÑÈë¿â',
-create_time timestamp not null comment '´´½¨Ê±¼ä',
+goods_id bigint not null comment 'å•†å“id',
+user_phone bigint not null comment 'ç”¨æˆ·æ‰‹æœº',
+state int(1) not null default -1 comment 'å•†å“çŠ¶æ€ï¼Œ-1ï¼šæ— æ•ˆ,0ï¼šæˆåŠŸ,1ï¼šæ— æ•ˆï¼Œ2ï¼šå·²å…¥åº“',
+create_time timestamp not null comment 'åˆ›å»ºæ—¶é—´',
 primary key (goods_id,user_phone),
 key idx_create_time (create_time)
-)engine=innodb default charset=utf8 comment='¶©µ¥Ã÷Ï¸±í';
+)engine=innodb default charset=utf8 comment='è®¢å•æ˜ç»†è¡¨';
