@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.platform.dao.OrderDao">
+
+    <!--目的:为dao接口方法提供sql语句配置 即针对dao接口中的方法编写我们的sql语句 -->
+
+    <insert id="insertGoods">
+        <!--当出现主键冲突时(即重复秒杀时)，会报错;加入ignore就不报错 -->
+        INSERT ignore INTO orders(goods_id,user_phone,state)
+        VALUES (#{goodsid},#{phone},0)
+    </insert>
+
+    <select id="queryById" resultType="Order">
+
+        <!--根据goodsid查询order对象，并携带goods对象 -->
+        <!--注意如何告诉mybatis把结果映射到order属性同时映射到goods属性 -->
+        <!--可以自由控制SQL语句 -->
+        SELECT
+        o.goods_id,
+        o.user_phone,
+        o.create_time,
+        o.state,
+        g.goods_id "goods.goods_id",
+        g.goods_name "goods.goods_name",
+        g.start_time "goods.start_time",
+        g.end_time "goods.end_time",
+        g.create_time "goods.create_time"
+        FROM orders o
+        INNER JOIN goods g ON o.goods_id=g.goods_id
+        WHERE o.goods_id=#{goodsid}
+        AND o.user_phone=#{phone}
+    </select>
+</mapper>

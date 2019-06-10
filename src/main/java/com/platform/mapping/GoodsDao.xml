@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.platform.dao.GoodsDao">
+    <!--目的:为dao接口方法提供sql语句配置
+   		 即针对dao接口中的方法编写我们的sql语句-->
+
+
+    <update id="reduceInventory">
+        UPDATE goods
+        SET inventory = inventory - 1
+        WHERE goods_id = #{goodsid}
+          AND start_time <![CDATA[ <= ]]> #{purchaseDate}
+          AND end_time >= #{purchaseDate}
+          AND inventory > 0;
+    </update>
+
+    <select id="queryById" resultType="Goods" parameterType="long">
+        SELECT *
+        FROM goods
+        WHERE goods_id = #{goodsid}
+    </select>
+
+    <select id="listAllGoods" resultType="Goods">
+        SELECT *
+        FROM goods
+        ORDER BY create_time DESC
+        limit #{offset},#{limit}
+    </select>
+
+    <!-- 使用存储过程 -->
+    <select id="purchaseByProcedure" statementType="CALLABLE">
+        call execute_purchase(
+                #{goodsid,jdbcType=BIGINT,mode=IN},
+                #{phone,jdbcType=BIGINT,mode=IN},
+                #{purchaseTime,jdbcType=TIMESTAMP,mode=IN},
+                #{result,jdbcType=INTEGER,mode=OUT}
+            )
+    </select>
+</mapper>
