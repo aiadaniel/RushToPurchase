@@ -47,7 +47,7 @@
         <struts2.version>2.5.10.1</struts2.version>
         <swagger.version>2.6.0</swagger.version>
         <jackson.version>2.9.9</jackson.version>
-        <mybatis.version>3.3.0</mybatis.version>
+        <mybatis.version>3.5.6</mybatis.version>
     </properties>
 
     <build>
